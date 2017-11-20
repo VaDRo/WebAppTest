@@ -1,0 +1,94 @@
+﻿@model WebApplication1.Models.Film
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Film</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RentalDuration)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RentalDuration)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RentalRate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RentalRate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Length)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Length)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ReplacementCost)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ReplacementCost)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastUpdate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastUpdate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Language)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Language.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OriginalLanguage)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OriginalLanguage.Name)
+        </dd>
+    </dl>
+    <dt>
+        @Html.DisplayNameFor(model => model.FilmActor)
+    </dt>
+    <dd>
+        <table class="table">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+            @foreach (var item in Model.FilmActor)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Actor.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Actor.LastName)
+                    </td>
+                </tr>
+            }
+        </table>
+    </dd>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.FilmId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

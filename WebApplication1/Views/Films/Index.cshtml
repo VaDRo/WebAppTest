@@ -1,0 +1,93 @@
+﻿@model IEnumerable<WebApplication1.Models.Film>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by Title: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.Title)*@
+                    <a asp-action="Index" asp-route-sortCondition="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.Title)</a>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RentalDuration)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RentalRate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Length)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ReplacementCost)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastUpdate)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Language)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OriginalLanguage)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RentalDuration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RentalRate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Length)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReplacementCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Language.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OriginalLanguage.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FilmId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.FilmId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.FilmId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
